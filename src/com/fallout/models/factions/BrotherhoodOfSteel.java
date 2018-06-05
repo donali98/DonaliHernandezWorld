@@ -1,9 +1,11 @@
 package com.fallout.models.factions;
 
-public class BrotherhoodOfSteel implements Faction {
+import com.fallout.models.factions.definitions.Faction;
 
-    @Override
-    public void asignarRecursos() {
+public class BrotherhoodOfSteel extends Faction {
 
+
+    public BrotherhoodOfSteel(String nombre, Faction faction, Double healthPoints, Double quantityPerPhase, Integer creationWaitingPhases) {
+        super(nombre, faction, healthPoints, quantityPerPhase, creationWaitingPhases);
     }
 }

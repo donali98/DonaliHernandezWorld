@@ -2,13 +2,20 @@ package com.fallout.models.factions;
 
 import com.fallout.controllers.factions.behavior.FactionActions;
 import com.fallout.models.factions.definitions.Faction;
-import com.fallout.models.resourses.definitions.Resourse;
 
-import java.util.ArrayList;
 
 public class TheInstitute extends Faction implements FactionActions {
-    public TheInstitute(String nombre) {
-        super(nombre);
+
+    private static TheInstitute institute;
+
+    private TheInstitute() {
+        super("The Institute");
+    }
+    public static TheInstitute getInstance(){
+        if(institute == null){
+            institute = new TheInstitute();
+        }
+        return institute;
     }
 
     @Override

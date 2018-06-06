@@ -2,19 +2,33 @@ package com.fallout.models.buildings.definitions;
 
 import com.fallout.models.Properties;
 import com.fallout.models.factions.definitions.Faction;
+import com.fallout.models.resourses.definitions.Resourse;
+import com.fallout.models.resourses.definitions.ResourseProperties;
+
+import java.util.ArrayList;
 
 
-public class Building implements BuildingActions {
+public class Building {
 
     Properties properties;
 
 
-    public Building(String name, Faction faction, Double healthPoints, Double quiantityPerPhase, Integer creationWaitingPhases) {
-        this.properties = Properties.getProperties(name,faction,healthPoints,quiantityPerPhase,creationWaitingPhases).build();
+    public Building(String name,
+                    Faction faction,
+                    Integer healthPoints,
+                    ArrayList<Resourse> requiredResources,
+                    Resourse productionResource) {
+        this.properties = Properties.getProperties(name,faction,healthPoints).
+                requiredResources(requiredResources).
+                productionResourse(productionResource).
+                build();
     }
 
-    @Override
-    public void generate(int ammount) {
-
+    public Building(String name,
+                    Faction faction,
+                    Integer healthPoints,
+                    ArrayList<Resourse> initialResources) {
+        this.properties = Properties.getProperties(name,faction,healthPoints).initialResourses(initialResources).build();
     }
+
 }

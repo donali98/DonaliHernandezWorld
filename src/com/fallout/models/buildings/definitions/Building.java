@@ -3,7 +3,6 @@ package com.fallout.models.buildings.definitions;
 import com.fallout.models.Properties;
 import com.fallout.models.factions.definitions.Faction;
 import com.fallout.models.resourses.definitions.Resourse;
-import com.fallout.models.resourses.definitions.ResourseProperties;
 
 import java.util.ArrayList;
 
@@ -17,18 +16,13 @@ public class Building {
                     Faction faction,
                     Integer healthPoints,
                     ArrayList<Resourse> requiredResources,
-                    Resourse productionResource) {
+                    Resourse productionResource,
+                    Integer productionAmountPerPhase) {
         this.properties = Properties.getProperties(name,faction,healthPoints).
                 requiredResources(requiredResources).
                 productionResourse(productionResource).
+                productionAmountPerPhase(productionAmountPerPhase).
                 build();
-    }
-
-    public Building(String name,
-                    Faction faction,
-                    Integer healthPoints,
-                    ArrayList<Resourse> initialResources) {
-        this.properties = Properties.getProperties(name,faction,healthPoints).initialResourses(initialResources).build();
     }
 
 }

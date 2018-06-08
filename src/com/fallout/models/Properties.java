@@ -2,7 +2,6 @@ package com.fallout.models;
 
 import com.fallout.models.factions.definitions.Faction;
 import com.fallout.models.resourses.definitions.Resourse;
-import com.fallout.models.resourses.definitions.ResourseProperties;
 
 import java.util.ArrayList;
 
@@ -20,17 +19,14 @@ public class Properties {
     private final Resourse productionResourse;
     private final ArrayList<Resourse> requiredResources;
     private final Integer creationWaitingPhases;
+    private final Integer productionAmountPerPhase;
+    private final boolean isMine;
+
 
     /**
      * Atributo/s solo para las tropas
      */
     private final Integer attackPoints;
-
-    /**
-     * Atributos para las edificaciones centros de mando
-     */
-        private final ArrayList<Resourse> initialResourses;
-
 
 
     private Properties(PropertiesBuilder builder) {
@@ -41,7 +37,8 @@ public class Properties {
         this.name = builder.name;
         this.requiredResources = builder.requiredResources;
         this.productionResourse = builder.productionResourse;
-        this.initialResourses = builder.initialResourses;
+        this.productionAmountPerPhase = builder.productionAmountPerPhase;
+        this.isMine = builder.isMine;
 
     }
 
@@ -70,21 +67,20 @@ public class Properties {
         return name;
     }
 
-
-    public ArrayList<Resourse> getRequiredResourses() {
-        return requiredResources;
-    }
-
-    public ArrayList<Resourse> getInitialResourses() {
-        return initialResourses;
-    }
-
     public Resourse getProductionResourse() {
         return productionResourse;
     }
 
     public ArrayList<Resourse> getRequiredResources() {
         return requiredResources;
+    }
+
+    public Integer getProductionAmountPerPhase() {
+        return productionAmountPerPhase;
+    }
+
+    public boolean isMine() {
+        return isMine;
     }
 
     public static class PropertiesBuilder{
@@ -94,8 +90,8 @@ public class Properties {
         private Integer attackPoints , creationWaitingPhases;
         private Resourse productionResourse;
         private ArrayList<Resourse> requiredResources;
-
-        private ArrayList<Resourse> initialResourses;
+        private  Integer productionAmountPerPhase;
+        private Boolean isMine;
 
         public PropertiesBuilder(String name, Faction faction, Integer healthPoints){
             this.name = name;
@@ -122,12 +118,15 @@ public class Properties {
             this.productionResourse = productionResourse;
             return this;
         }
-
-        public PropertiesBuilder initialResourses(ArrayList<Resourse> initialResourses){
-            this.initialResourses = initialResourses;
+        public PropertiesBuilder productionAmountPerPhase(Integer productionAmountPerPhase){
+            this.productionAmountPerPhase = productionAmountPerPhase;
             return this;
         }
 
+        public PropertiesBuilder isMine(boolean isMine){
+            this.isMine = isMine;
+            return this;
+        }
 
         public Properties build(){
                 Properties properties = new Properties(this);

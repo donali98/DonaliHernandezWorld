@@ -21,5 +21,6 @@ public class Main {
         InstituteHeadquarters headquarters = new InstituteHeadquarters(
                 100,
                 instituteResources);
+        }
     }
-}
+

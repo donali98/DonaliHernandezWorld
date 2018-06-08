@@ -6,13 +6,15 @@ import com.fallout.models.resourses.definitions.Resourse;
 
 import java.util.ArrayList;
 
-public class Headquarter extends Building {
+public class Headquarter  {
 
-    public Headquarter(String name,
-                       Faction faction,
-                       Integer healthPoints,
-                       ArrayList<Resourse> initialResourses){
-        super(name, faction, healthPoints ,initialResourses);
+    private ArrayList<Resourse> resourcesList;
+    private ArrayList<Building> createdBuilds;
+    private Faction faction;
+
+
+    public Headquarter(ArrayList<Resourse> resoursesList) {
+        this.resourcesList = resoursesList;
     }
 }
 

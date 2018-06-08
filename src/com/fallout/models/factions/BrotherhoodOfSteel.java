@@ -5,7 +5,16 @@ import com.fallout.models.factions.definitions.Faction;
 public class BrotherhoodOfSteel extends Faction {
 
 
-    public BrotherhoodOfSteel(String nombre, Faction faction, Double healthPoints, Double quantityPerPhase, Integer creationWaitingPhases) {
-        super(nombre, faction, healthPoints, quantityPerPhase, creationWaitingPhases);
+    private static BrotherhoodOfSteel brotherhoodOfSteel;
+
+    private BrotherhoodOfSteel(String nombre) {
+        super(nombre);
+    }
+
+    public static BrotherhoodOfSteel getInstance(){
+        if(brotherhoodOfSteel == null){
+            brotherhoodOfSteel = new BrotherhoodOfSteel("Brotherhood of Steel");
+        }
+        return brotherhoodOfSteel;
     }
 }

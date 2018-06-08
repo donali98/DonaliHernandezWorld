@@ -1,15 +1,21 @@
 package com.fallout.controllers;
 
+import com.fallout.AbstractFactory;
+import com.fallout.FactoryProducer;
+import com.fallout.models.Factories;
 import com.fallout.models.buildings.definitions.Building;
+import com.fallout.models.factions.definitions.Faction;
 
 import java.util.ArrayList;
 
 public class Round {
 
-    private ArrayList<Building> buildings;
+    private ArrayList<Faction> factions;
 
     public void createFactions(){
-        buildings = new ArrayList<>();
+        factions = new ArrayList<>();
+        AbstractFactory factory = FactoryProducer.getFactory(Factories.FACTION_FACTORY);
+
     }
 
 

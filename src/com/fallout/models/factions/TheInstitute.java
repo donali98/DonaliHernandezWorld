@@ -1,16 +1,13 @@
 package com.fallout.models.factions;
 
-import com.fallout.controllers.factions.behavior.FactionActions;
 import com.fallout.models.factions.definitions.Faction;
+import com.fallout.models.factions.definitions.FactionActions;
 
 
 public class TheInstitute extends Faction implements FactionActions {
 
     private static TheInstitute institute;
 
-    private TheInstitute() {
-        super("The Institute");
-    }
     public static TheInstitute getInstance(){
         if(institute == null){
             institute = new TheInstitute();
@@ -19,7 +16,7 @@ public class TheInstitute extends Faction implements FactionActions {
     }
 
     @Override
-    public void attackBuilding() {
+    public void buildMine() {
 
     }
 }

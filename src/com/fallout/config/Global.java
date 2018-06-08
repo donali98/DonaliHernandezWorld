@@ -14,6 +14,7 @@ public class Global {
     public static final int LOW = 35;
     public static final int STANDARD = 0;
     public static final int HIGH = 45;
+    public static final int BUILDING_LIMITS = 3;
 
 
 

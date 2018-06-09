@@ -5,7 +5,7 @@ import com.fallout.models.resourses.definitions.Resourse;
 
 public class Oil extends Resourse {
 
-    public Oil(Integer amount, Faction faction) {
-        super(amount, faction);
+    public Oil(Integer amount, Faction faction,Integer headQuarterStorageLimit) {
+        super(amount, faction,headQuarterStorageLimit);
     }
 }

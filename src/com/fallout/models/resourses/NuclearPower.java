@@ -6,8 +6,8 @@ import com.fallout.models.resourses.definitions.Resourse;
 public class NuclearPower extends Resourse {
 
 
-    public NuclearPower( Integer amount, Faction faction) {
-        super(amount,faction);
+    public NuclearPower( Integer amount, Faction faction,Integer headQuarterStorageLimit) {
+        super(amount,faction,headQuarterStorageLimit);
 
     }
 

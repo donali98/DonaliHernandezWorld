@@ -1,6 +1,6 @@
 package com.fallout.models.buildings;
 
-import com.fallout.controllers.buildings.behavior.BuildingActions;
+import com.fallout.models.buildings.definitions.BuildingActions;
 import com.fallout.models.buildings.definitions.Building;
 import com.fallout.models.factions.definitions.Faction;
 import com.fallout.models.resourses.definitions.Resourse;
@@ -13,7 +13,9 @@ public class AdvancedSystems extends Building implements BuildingActions {
                            Integer healthPoints,
                            ArrayList<Resourse> requiredResourses,
                            Resourse productionResource){
-        super(name, faction, healthPoints, requiredResourses,productionResource);
+        super(name, faction, healthPoints, requiredResourses,productionResource,
+                150,
+                true);
     }
 
     @Override

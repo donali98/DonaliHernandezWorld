@@ -1,22 +1,23 @@
 package com.fallout.models.factions;
 
 import com.fallout.models.factions.definitions.Faction;
-import com.fallout.models.factions.definitions.FactionActions;
+import com.fallout.models.resourses.EnclaveRemainder;
+import com.fallout.models.resourses.NuclearPower;
+import com.fallout.models.resourses.Oil;
 
+//ya implemento las factionActions
+public class TheInstitute extends Faction  {
 
-public class TheInstitute extends Faction implements FactionActions {
+    public TheInstitute() {
+        try {
+            this.getHeadquarter().addResource(new NuclearPower(100,this,10000));
+            this.getHeadquarter().addResource(new EnclaveRemainder(500,this,5000));
+            this.getHeadquarter().addResource(new Oil(300,this,3000));
 
-    private static TheInstitute institute;
+        } catch (Exception e) {
 
-    public static TheInstitute getInstance(){
-        if(institute == null){
-            institute = new TheInstitute();
+            e.printStackTrace();
         }
-        return institute;
-    }
-
-    @Override
-    public void buildMine() {
 
     }
 }

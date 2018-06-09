@@ -5,20 +5,30 @@ import com.fallout.models.buildings.definitions.Headquarter;
 
 import java.util.ArrayList;
 
-public class Faction {
+public class Faction implements FactionActions {
 
 
-    private ArrayList<Building> instituteBuildings;
-    private Headquarter instituteHeadquarter;
+    private ArrayList<Building> buildings;
+    private Headquarter headquarter;
 
     public Faction() {
 
-        this.instituteBuildings = new ArrayList<>();
-        this.instituteHeadquarter = new Headquarter(this);
-
+        this.buildings = new ArrayList<>();
+        this.headquarter = new Headquarter(this);
 
 
     }
 
+    public ArrayList<Building> getBuildings() {
+        return buildings;
+    }
 
+    public Headquarter getHeadquarter() {
+        return headquarter;
+    }
+
+    @Override
+    public void buildMine() {
+
+    }
 }

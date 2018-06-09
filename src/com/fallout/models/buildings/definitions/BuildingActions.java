@@ -1,4 +1,4 @@
-package com.fallout.controllers.buildings.behavior;
+package com.fallout.models.buildings.definitions;
 
 public interface BuildingActions {
     void build();

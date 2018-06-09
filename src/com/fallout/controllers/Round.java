@@ -14,7 +14,7 @@ public class Round {
 
     public void createFactions(){
         factions = new ArrayList<>();
-        AbstractFactory factory = FactoryProducer.getFactory(Factories.FACTION_FACTORY);
+        //AbstractFactory factory = FactoryProducer.getFactory(Factories.FACTION_FACTORY);
 
     }
 

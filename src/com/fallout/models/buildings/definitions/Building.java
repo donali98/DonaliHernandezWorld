@@ -17,11 +17,13 @@ public class Building {
                     Integer healthPoints,
                     ArrayList<Resourse> requiredResources,
                     Resourse productionResource,
-                    Integer productionAmountPerPhase) {
+                    Integer productionAmountPerPhase,
+                    boolean isMine) {
         this.properties = Properties.getProperties(name,faction,healthPoints).
                 requiredResources(requiredResources).
                 productionResourse(productionResource).
                 productionAmountPerPhase(productionAmountPerPhase).
+                isMine(isMine).
                 build();
     }
 

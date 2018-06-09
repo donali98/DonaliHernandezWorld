@@ -5,8 +5,6 @@ import com.fallout.models.factions.definitions.Faction;
 
 public interface AbstractFactory {
 
-    Faction getFaction();
     Building getBuilding();
-    ResourseProperties getResourse();
 
 }

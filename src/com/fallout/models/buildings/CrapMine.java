@@ -13,6 +13,6 @@ public class CrapMine extends Building {
                     ArrayList<Resourse> requiredResourses,
                     Resourse productionResource,
                     Integer productionAmountPerPhase) {
-        super(name, faction, healthPoints, requiredResourses,productionResource, productionAmountPerPhase);
+        super(name, faction, healthPoints, requiredResourses,productionResource, productionAmountPerPhase,true);
     }
 }

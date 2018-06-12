@@ -1,11 +1,13 @@
 package com.fallout.controllers.buildings;
 
+import com.fallout.config.KnowBuildings;
+import com.fallout.config.KnownFactions;
 import com.fallout.controllers.GeneralControllerActions;
 import com.fallout.models.buildings.definitions.Building;
 
 import java.util.ArrayList;
 
-public class BuildingsController implements GeneralControllerActions<Building,String> {
+public class BuildingsController implements GeneralControllerActions<Building,KnowBuildings> {
     private static  BuildingsController buildingsController;
     private static ArrayList<Building> buildings;
     private BuildingsController(){}
@@ -18,7 +20,7 @@ public class BuildingsController implements GeneralControllerActions<Building,St
     }
 
     @Override
-    public boolean add(Building type)
+    public boolean addElement(Building type)
     {
         if(!buildings.contains(type)){
             buildings.add(type);
@@ -28,12 +30,23 @@ public class BuildingsController implements GeneralControllerActions<Building,St
     }
 
     @Override
-    public Building get(String type) {
+    public Building getElementByName(KnowBuildings type) {
         for(Building building: buildings){
-            if(building.getProperties().getBuildName().equals(type.toUpperCase())){
+            if(building.getProperties().getBuildName() == type){
                 return building;
             }
         }
+        return null;
+    }
+
+    @Override
+    public Building getElementById(Integer type) {
+        for (Building building: buildings){
+            if(building.getProperties().getElementId().equals(type) ){
+                return building;
+            }
+        }
+
         return null;
     }
 

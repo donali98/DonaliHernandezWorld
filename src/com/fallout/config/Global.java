@@ -1,7 +1,7 @@
 package com.fallout.config;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.fallout.controllers.factions.FactionController;
+
 import java.util.Scanner;
 
 /**
@@ -16,12 +16,20 @@ public class Global {
      *     puntos bases de cada objeto de cada faccion para definir fortalezas
      */
 
-     public static final String [] MENU_PRINCIPAL = {
+     public static String[] getAvailableFactions(){
+         int length = FactionController.getInstance().returnAll().size();
+         String[] availableFactions = new String[length];
+         for (int i = 0; i<length;i++){
+             availableFactions[i] =(i+1)+"- "+FactionController.getInstance().returnAll().get(i).getFactionName();
+         }
+         return availableFactions;
+     }
+     public static final String [] MAIN_MENU = {
              "1-Iniciar Partida",
              "2-Instrucciones"
      };
 
-    public static int menu(String[] opciones){
+    public static int displayMenu(String[] opciones){
         Scanner scanner = new Scanner(System.in);
         int op = 10;
         while ( op !=0){

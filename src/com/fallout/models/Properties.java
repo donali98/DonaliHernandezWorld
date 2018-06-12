@@ -1,5 +1,6 @@
 package com.fallout.models;
 
+import com.fallout.config.KnowBuildings;
 import com.fallout.models.factions.definitions.Faction;
 import com.fallout.models.resourses.definitions.Resourse;
 
@@ -10,11 +11,12 @@ public class Properties {
     /***
      * Atributo nombre que varia segun el tipo de objeto que se quiere crear
      */
-    private final String buildName;
+    private final KnowBuildings buildName;
 
     /**
      * Atributos basicos para todas los objetos que participan en una partida (requeridos)
      */
+
     private final Integer healthPoints;
     private final Faction faction;
 
@@ -26,12 +28,15 @@ public class Properties {
     private final Integer creationWaitingPhases;
     private final Integer productionAmountPerPhase;
     private final boolean isMine;
+    private final Integer elementId;
 
 
     /**
      * Atributo/s solo para las tropas
      */
     private final Integer attackPoints;
+
+
 
 
     private Properties(PropertiesBuilder builder) {
@@ -44,10 +49,13 @@ public class Properties {
         this.productionResourse = builder.productionResourse;
         this.productionAmountPerPhase = builder.productionAmountPerPhase;
         this.isMine = builder.isMine;
+        this.elementId = builder.elementId;
 
     }
 
-    public static PropertiesBuilder getProperties(Faction faction, Integer healthPoints){ return new PropertiesBuilder(faction,healthPoints); }
+    public static PropertiesBuilder getProperties(Faction faction, Integer healthPoints, Integer elementId){
+        return new PropertiesBuilder(faction,healthPoints,elementId);
+    }
 
 
     public Integer getHealthPoints() {
@@ -67,9 +75,7 @@ public class Properties {
         return faction;
     }
 
-    public String getBuildName() {
-        return buildName;
-    }
+    public KnowBuildings getBuildName() { return buildName; }
 
     public Resourse getProductionResourse() {
         return productionResourse;
@@ -87,8 +93,10 @@ public class Properties {
         return isMine;
     }
 
+    public Integer getElementId() { return elementId; }
+
     public static class PropertiesBuilder{
-        private String buildName;
+        private KnowBuildings buildName;
         private  final Faction faction;
         private  final Integer healthPoints;
         private Integer attackPoints , creationWaitingPhases;
@@ -96,13 +104,15 @@ public class Properties {
         private HashMap<Integer,Resourse> requiredResources;
         private  Integer productionAmountPerPhase;
         private Boolean isMine;
+        private final Integer elementId;
 
-        public PropertiesBuilder( Faction faction, Integer healthPoints){
+        public PropertiesBuilder( Faction faction, Integer healthPoints,Integer elementId){
             this.faction = faction;
             this.healthPoints = healthPoints;
+            this.elementId = elementId;
         }
 
-        public PropertiesBuilder buildName(String buildName){
+        public PropertiesBuilder buildName(KnowBuildings buildName){
             this.buildName = buildName;
             return this;
         }

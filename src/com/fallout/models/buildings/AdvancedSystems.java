@@ -1,5 +1,6 @@
 package com.fallout.models.buildings;
 
+import com.fallout.config.KnowBuildings;
 import com.fallout.models.buildings.definitions.BuildingActions;
 import com.fallout.models.buildings.definitions.Building;
 import com.fallout.models.factions.definitions.Faction;
@@ -15,7 +16,7 @@ public class AdvancedSystems extends Building implements BuildingActions {
                            Resourse productionResource){
         super( faction, healthPoints, requiredResourses,productionResource,
                 150,
-                true,"ADVANCED SYSTEMS");
+                true,KnowBuildings.ADVANCED_SYSTEMS);
     }
 
     @Override

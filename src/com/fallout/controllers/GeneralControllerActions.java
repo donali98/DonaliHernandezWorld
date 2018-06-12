@@ -2,9 +2,10 @@ package com.fallout.controllers;
 
 import java.util.ArrayList;
 
-public interface GeneralControllerActions<E,B> {
+public interface GeneralControllerActions<A,B> {
 
-    boolean add(E type);
-     E get(B type);
-     ArrayList<E> returnAll();
+    boolean addElement(A type);
+     A getElementByName(B type);
+     A getElementById(Integer type);
+     ArrayList<A> returnAll();
 }

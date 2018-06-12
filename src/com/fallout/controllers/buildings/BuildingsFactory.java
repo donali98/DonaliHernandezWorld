@@ -1,6 +1,7 @@
 package com.fallout.controllers.buildings;
 
 import com.fallout.AbstractFactory;
+import com.fallout.config.KnownFactions;
 import com.fallout.models.buildings.definitions.Building;
 import com.fallout.models.factions.definitions.Faction;
 
@@ -19,7 +20,7 @@ public class BuildingsFactory implements AbstractFactory {
     }
 
     @Override
-    public Faction getFaction(String factions) {
+    public Faction getFaction(KnownFactions faction) {
         return null;
     }
 }

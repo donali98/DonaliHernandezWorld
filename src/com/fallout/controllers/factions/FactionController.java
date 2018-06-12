@@ -1,11 +1,12 @@
 package com.fallout.controllers.factions;
 
+import com.fallout.config.KnownFactions;
 import com.fallout.controllers.GeneralControllerActions;
 import com.fallout.models.factions.definitions.Faction;
 
 import java.util.ArrayList;
 
-public class FactionController implements GeneralControllerActions<Faction,String > {
+public class FactionController implements GeneralControllerActions<Faction,KnownFactions> {
     private static FactionController factionsController;
     private static ArrayList<Faction> factions;
 
@@ -21,21 +22,33 @@ public class FactionController implements GeneralControllerActions<Faction,Strin
 
 
     @Override
-    public boolean add(Faction type) {
-        if(!factions.contains(type)){
-            factions.add(type);
+    public boolean addElement(Faction faction) {
+        if(!factions.contains(faction)){
+            factions.add(faction);
             return true;
         }
         else return false;
     }
 
     @Override
-    public Faction get(String type) {
+    public Faction getElementByName(KnownFactions type) {
         for (Faction faction: factions){
-            if(faction.getFactionName().equals(type.toUpperCase()) ){
+            if(faction.getFactionName() == type) {
                 return faction;
             }
         }
+        return null;
+    }
+
+    @Override
+    public Faction getElementById(Integer type) {
+
+        for (Faction faction: factions){
+            if(faction.getFactionId().equals(type) ){
+                return faction;
+            }
+        }
+
         return null;
     }
 

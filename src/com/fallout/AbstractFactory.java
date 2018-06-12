@@ -5,6 +5,7 @@ import com.fallout.models.factions.definitions.Faction;
 
 public interface AbstractFactory {
 
-    Building getBuilding();
+    Building getBuilding(String building);
+    Faction getFaction(String faction);
 
 }

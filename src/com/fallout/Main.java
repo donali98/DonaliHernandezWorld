@@ -1,20 +1,29 @@
 package com.fallout;
 
 
-import com.fallout.controllers.factions.FactionsController;
-import com.fallout.models.factions.TheInstitute;
-import com.fallout.models.factions.definitions.Faction;
-import com.fallout.models.resourses.definitions.Resourse;
+import com.fallout.config.Global;
+
 
 public class Main {
 
     public static void main(String[] args) {
 
-        FactionsController factionsController = FactionsController.getInstance();
+        /*//Instanciando los controladores
+        FactionController factionsController = FactionController.getInstance();
+        BuildingsController buildingsController = BuildingsController.getInstance();
+
+        //Creando a las facciones (razas)
         factionsController.add(new TheInstitute());
-        Faction faction = factionsController.get(0);
-        for(Resourse r : faction.getHeadquarter().getResources()){
-            System.out.println(r.getHeadQuarterStorageLimit());
+        factionsController.add(new BrotherhoodOfSteel());*/
+        System.out.println("******************FALLOUT STRATEGY(DONALI HERNANDEZ'S WORLD)******************\n");
+        int opSelected = Global.menu(Global.MENU_PRINCIPAL);
+        switch (opSelected){
+            case 1:
+
+
         }
+
     }
+
+
 }

@@ -3,13 +3,18 @@ package com.fallout.models;
 import com.fallout.models.factions.definitions.Faction;
 import com.fallout.models.resourses.definitions.Resourse;
 
-import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Properties {
+
+    /***
+     * Atributo nombre que varia segun el tipo de objeto que se quiere crear
+     */
+    private final String buildName;
+
     /**
      * Atributos basicos para todas los objetos que participan en una partida (requeridos)
      */
-    private final String name;
     private final Integer healthPoints;
     private final Faction faction;
 
@@ -17,7 +22,7 @@ public class Properties {
      * Atributos para edificaciones y/o tropas
      */
     private final Resourse productionResourse;
-    private final ArrayList<Resourse> requiredResources;
+    private final HashMap<Integer, Resourse > requiredResources;
     private final Integer creationWaitingPhases;
     private final Integer productionAmountPerPhase;
     private final boolean isMine;
@@ -34,7 +39,7 @@ public class Properties {
         this.attackPoints = builder.attackPoints;
         this.creationWaitingPhases = builder.creationWaitingPhases;
         this.faction = builder.faction;
-        this.name = builder.name;
+        this.buildName = builder.buildName;
         this.requiredResources = builder.requiredResources;
         this.productionResourse = builder.productionResourse;
         this.productionAmountPerPhase = builder.productionAmountPerPhase;
@@ -42,9 +47,8 @@ public class Properties {
 
     }
 
-    public static PropertiesBuilder getProperties(String name, Faction faction, Integer healthPoints){
-                return new PropertiesBuilder(name,faction,healthPoints);
-    }
+    public static PropertiesBuilder getProperties(Faction faction, Integer healthPoints){ return new PropertiesBuilder(faction,healthPoints); }
+
 
     public Integer getHealthPoints() {
         return healthPoints;
@@ -63,15 +67,15 @@ public class Properties {
         return faction;
     }
 
-    public String getName() {
-        return name;
+    public String getBuildName() {
+        return buildName;
     }
 
     public Resourse getProductionResourse() {
         return productionResourse;
     }
 
-    public ArrayList<Resourse> getRequiredResources() {
+    public HashMap<Integer, Resourse> getRequiredResources() {
         return requiredResources;
     }
 
@@ -84,21 +88,24 @@ public class Properties {
     }
 
     public static class PropertiesBuilder{
-        private final String name;
+        private String buildName;
         private  final Faction faction;
         private  final Integer healthPoints;
         private Integer attackPoints , creationWaitingPhases;
         private Resourse productionResourse;
-        private ArrayList<Resourse> requiredResources;
+        private HashMap<Integer,Resourse> requiredResources;
         private  Integer productionAmountPerPhase;
         private Boolean isMine;
 
-        public PropertiesBuilder(String name, Faction faction, Integer healthPoints){
-            this.name = name;
+        public PropertiesBuilder( Faction faction, Integer healthPoints){
             this.faction = faction;
             this.healthPoints = healthPoints;
         }
 
+        public PropertiesBuilder buildName(String buildName){
+            this.buildName = buildName;
+            return this;
+        }
 
         public PropertiesBuilder attackPoints(Integer attackPoints){
             this.attackPoints = attackPoints;
@@ -110,7 +117,7 @@ public class Properties {
             return this;
         }
 
-        public PropertiesBuilder requiredResources(ArrayList<Resourse> requiredResources){
+        public PropertiesBuilder requiredResources(HashMap<Integer,Resourse> requiredResources){
             this.requiredResources = requiredResources;
             return this;
         }

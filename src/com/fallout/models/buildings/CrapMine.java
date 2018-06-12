@@ -4,15 +4,16 @@ import com.fallout.models.buildings.definitions.Building;
 import com.fallout.models.factions.definitions.Faction;
 import com.fallout.models.resourses.definitions.Resourse;
 
-import java.util.ArrayList;
+import java.util.HashMap;
+
 
 public class CrapMine extends Building {
-    public CrapMine(String name,
+    public CrapMine(
                     Faction faction,
                     Integer healthPoints,
-                    ArrayList<Resourse> requiredResourses,
+                    HashMap<Integer,Resourse> requiredResourses,
                     Resourse productionResource,
                     Integer productionAmountPerPhase) {
-        super(name, faction, healthPoints, requiredResourses,productionResource, productionAmountPerPhase,true);
+        super(faction,healthPoints, requiredResourses,productionResource, productionAmountPerPhase,true,"CRAP_MINE");
     }
 }

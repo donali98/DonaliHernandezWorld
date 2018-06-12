@@ -5,14 +5,18 @@ import com.fallout.models.buildings.definitions.Headquarter;
 
 import java.util.ArrayList;
 
-public class Faction implements FactionActions {
+public class Faction {
 
 
     private ArrayList<Building> buildings;
     private Headquarter headquarter;
-
-    public Faction() {
-
+    private String factionName;
+    /***
+     *     Se deja como protected por el hecho de que las unicas clases 'autorizadas' para poder crear instancias
+     *     de esta clase son los modelos que hereden de la misma
+     */
+    protected Faction(String factionName) {
+        this.factionName = factionName;
         this.buildings = new ArrayList<>();
         this.headquarter = new Headquarter(this);
 
@@ -27,8 +31,7 @@ public class Faction implements FactionActions {
         return headquarter;
     }
 
-    @Override
-    public void buildMine() {
-
+    public String getFactionName() {
+        return factionName;
     }
 }

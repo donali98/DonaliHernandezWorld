@@ -1,9 +1,9 @@
 package com.fallout.models;
 
 import com.fallout.config.KnownBuildings;
+import com.fallout.config.KnownFactions;
 import com.fallout.config.KnownResources;
 import com.fallout.models.factions.definitions.Faction;
-import com.fallout.models.resourses.definitions.Resourse;
 
 import java.util.HashMap;
 
@@ -19,7 +19,7 @@ public class Properties {
      */
 
     private final Integer healthPoints;
-    private final Faction faction;
+    private final KnownFactions faction;
 
     /**
      * Atributos para edificaciones y/o tropas
@@ -54,7 +54,7 @@ public class Properties {
 
     }
 
-    public static PropertiesBuilder getProperties(Faction faction, Integer healthPoints, Integer elementId){
+    public static PropertiesBuilder getProperties(KnownFactions faction, Integer healthPoints, Integer elementId){
         return new PropertiesBuilder(faction,healthPoints,elementId);
     }
 
@@ -72,7 +72,7 @@ public class Properties {
         return creationWaitingPhases;
     }
 
-    public Faction getFaction() {
+    public KnownFactions getFaction() {
         return faction;
     }
 
@@ -98,18 +98,22 @@ public class Properties {
 
 
     public static class PropertiesBuilder{
-        private KnownBuildings buildName;
-        private  final Faction faction;
+
+        private  final KnownFactions faction;
         private  final Integer healthPoints;
+        private final Integer elementId;
+
+
         private Integer attackPoints , creationWaitingPhases;
         private KnownResources productionResourse;
         private HashMap<KnownResources,Integer> requiredResources;
         private  Integer productionAmountPerPhase;
         private Boolean isMine;
-        private final Integer elementId;
+        private KnownBuildings buildName;
 
 
-        public PropertiesBuilder( Faction faction, Integer healthPoints,Integer elementId){
+
+        public PropertiesBuilder( KnownFactions faction, Integer healthPoints,Integer elementId){
             this.faction = faction;
             this.healthPoints = healthPoints;
             this.elementId = elementId;

@@ -14,6 +14,7 @@ public class BuildingsController implements GeneralControllerActions<Building,Kn
     public static BuildingsController getInstance(){
         if(buildingsController==null){
             buildingsController = new BuildingsController();
+            buildings = new ArrayList<>();
         }
         return buildingsController;
     }

@@ -1,7 +1,6 @@
 package com.fallout.models.resourses;
 
 import com.fallout.config.KnownFactions;
-import com.fallout.controllers.factions.FactionController;
 import com.fallout.models.resourses.definitions.Resourse;
 
 public class Steel extends Resourse {

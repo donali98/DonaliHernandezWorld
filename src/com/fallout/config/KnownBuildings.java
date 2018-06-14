@@ -1,6 +1,6 @@
 package com.fallout.config;
 
-public enum KnowBuildings {
+public enum KnownBuildings {
     ADVANCED_SYSTEMS,
     CRAP_MINE
 }

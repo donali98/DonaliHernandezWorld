@@ -1,22 +1,27 @@
 package com.fallout.models.buildings;
 
-import com.fallout.config.KnowBuildings;
+import com.fallout.config.KnownBuildings;
+import com.fallout.config.KnownFactions;
+import com.fallout.config.KnownResources;
+import com.fallout.controllers.factions.FactionController;
 import com.fallout.models.buildings.definitions.BuildingActions;
 import com.fallout.models.buildings.definitions.Building;
-import com.fallout.models.factions.definitions.Faction;
-import com.fallout.models.resourses.definitions.Resourse;
 
 import java.util.HashMap;
 
 
 public class AdvancedSystems extends Building implements BuildingActions {
-    public AdvancedSystems(Faction faction,
-                           Integer healthPoints,
-                          HashMap<Integer,Resourse> requiredResourses,
-                           Resourse productionResource){
-        super( faction, healthPoints, requiredResourses,productionResource,
+    public AdvancedSystems(Integer healthPoints,
+                           KnownResources productionResource){
+        super(
+                FactionController.getInstance().getElementByName(KnownFactions.THE_INSTITUTE),
+                healthPoints,
+                setRequiredResources(),
+                productionResource,
                 150,
-                true,KnowBuildings.ADVANCED_SYSTEMS);
+                true,
+                KnownBuildings.ADVANCED_SYSTEMS
+        );
     }
 
     @Override
@@ -32,5 +37,14 @@ public class AdvancedSystems extends Building implements BuildingActions {
     @Override
     public void extract() {
 
+    }
+
+    private static HashMap<KnownResources,Integer> setRequiredResources(){
+
+        HashMap<KnownResources,Integer> requiredResources = new HashMap<>();
+        requiredResources.put(KnownResources.NUCLEAR_MATERIAL,100);
+        requiredResources.put(KnownResources.OIL,100);
+        requiredResources.put(KnownResources.ENCLAVE_REMAINDER,100);
+        return requiredResources;
     }
 }

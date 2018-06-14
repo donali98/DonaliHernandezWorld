@@ -41,10 +41,10 @@ public class FactionController implements GeneralControllerActions<Faction,Known
     }
 
     @Override
-    public Faction getElementById(Integer type) {
+    public Faction getElementById(Integer id) {
 
         for (Faction faction: factions){
-            if(faction.getFactionId().equals(type) ){
+            if(faction.getFactionId().equals(id) ){
                 return faction;
             }
         }

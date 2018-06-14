@@ -12,9 +12,9 @@ public class TheInstitute extends Faction implements FactionActions {
     public TheInstitute() {
         super(KnownFactions.THE_INSTITUTE);
         try {
-            this.getHeadquarter().addResource(new NuclearPower(100,this,10000));
-            this.getHeadquarter().addResource(new EnclaveRemainder(500,this,5000));
-            this.getHeadquarter().addResource(new Oil(300,this,3000));
+            this.getHeadquarter().addResource(new NuclearPower(100,10000));
+            this.getHeadquarter().addResource(new EnclaveRemainder(500,5000));
+            this.getHeadquarter().addResource(new Oil(300,3000));
 
         } catch (Exception e) {
 

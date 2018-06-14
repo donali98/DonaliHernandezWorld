@@ -1,6 +1,7 @@
 package com.fallout.models;
 
-import com.fallout.config.KnowBuildings;
+import com.fallout.config.KnownBuildings;
+import com.fallout.config.KnownResources;
 import com.fallout.models.factions.definitions.Faction;
 import com.fallout.models.resourses.definitions.Resourse;
 
@@ -11,10 +12,10 @@ public class Properties {
     /***
      * Atributo nombre que varia segun el tipo de objeto que se quiere crear
      */
-    private final KnowBuildings buildName;
+    private final KnownBuildings buildName;
 
     /**
-     * Atributos basicos para todas los objetos que participan en una partida (requeridos)
+     * Atributos basicos para la mayoria de los objetos que participan en una partida (requeridos)
      */
 
     private final Integer healthPoints;
@@ -23,8 +24,8 @@ public class Properties {
     /**
      * Atributos para edificaciones y/o tropas
      */
-    private final Resourse productionResourse;
-    private final HashMap<Integer, Resourse > requiredResources;
+    private final KnownResources productionResourse;
+    private final HashMap<KnownResources,Integer > requiredResources;
     private final Integer creationWaitingPhases;
     private final Integer productionAmountPerPhase;
     private final boolean isMine;
@@ -75,13 +76,13 @@ public class Properties {
         return faction;
     }
 
-    public KnowBuildings getBuildName() { return buildName; }
+    public KnownBuildings getBuildName() { return buildName; }
 
-    public Resourse getProductionResourse() {
+    public KnownResources getProductionResourse() {
         return productionResourse;
     }
 
-    public HashMap<Integer, Resourse> getRequiredResources() {
+    public HashMap<KnownResources,Integer> getRequiredResources() {
         return requiredResources;
     }
 
@@ -95,16 +96,18 @@ public class Properties {
 
     public Integer getElementId() { return elementId; }
 
+
     public static class PropertiesBuilder{
-        private KnowBuildings buildName;
+        private KnownBuildings buildName;
         private  final Faction faction;
         private  final Integer healthPoints;
         private Integer attackPoints , creationWaitingPhases;
-        private Resourse productionResourse;
-        private HashMap<Integer,Resourse> requiredResources;
+        private KnownResources productionResourse;
+        private HashMap<KnownResources,Integer> requiredResources;
         private  Integer productionAmountPerPhase;
         private Boolean isMine;
         private final Integer elementId;
+
 
         public PropertiesBuilder( Faction faction, Integer healthPoints,Integer elementId){
             this.faction = faction;
@@ -112,7 +115,8 @@ public class Properties {
             this.elementId = elementId;
         }
 
-        public PropertiesBuilder buildName(KnowBuildings buildName){
+
+        public PropertiesBuilder buildName(KnownBuildings buildName){
             this.buildName = buildName;
             return this;
         }
@@ -127,11 +131,11 @@ public class Properties {
             return this;
         }
 
-        public PropertiesBuilder requiredResources(HashMap<Integer,Resourse> requiredResources){
+        public PropertiesBuilder requiredResources(HashMap<KnownResources,Integer> requiredResources){
             this.requiredResources = requiredResources;
             return this;
         }
-        public PropertiesBuilder productionResourse(Resourse productionResourse){
+        public PropertiesBuilder productionResourse(KnownResources productionResourse){
             this.productionResourse = productionResourse;
             return this;
         }
@@ -144,6 +148,7 @@ public class Properties {
             this.isMine = isMine;
             return this;
         }
+
 
         public Properties build(){
                 Properties properties = new Properties(this);

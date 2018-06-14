@@ -3,7 +3,6 @@ package com.fallout.models.factions.definitions;
 import com.fallout.config.KnownFactions;
 import com.fallout.controllers.factions.FactionController;
 import com.fallout.models.buildings.definitions.Building;
-import com.fallout.models.buildings.definitions.Headquarter;
 
 import java.util.ArrayList;
 
@@ -18,7 +17,7 @@ public class Faction {
      *     de esta clase son los modelos que hereden de la misma
      */
     protected Faction(KnownFactions faction) {
-        this.factionId = FactionController.getInstance().returnAll() == null ? 1:FactionController.getInstance().returnAll().size() ;
+        this.factionId = FactionController.getInstance().returnAll() == null ? 1:FactionController.getInstance().returnAll().size()+1 ;
         this.factionName = faction;
         this.buildings = new ArrayList<>();
         this.headquarter = new Headquarter(this);
@@ -30,9 +29,7 @@ public class Faction {
         return buildings;
     }
 
-    public Headquarter getHeadquarter() {
-        return headquarter;
-    }
+    public Headquarter getHeadquarter() { return headquarter; }
 
     public KnownFactions getFactionName() { return factionName; }
 

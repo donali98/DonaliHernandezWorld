@@ -1,26 +1,36 @@
 package com.fallout.controllers.buildings;
 
 import com.fallout.AbstractFactory;
+import com.fallout.FactoryProducer;
+import com.fallout.config.KnownBuildings;
 import com.fallout.config.KnownFactions;
+import com.fallout.config.KnownResources;
+import com.fallout.models.Factories;
+import com.fallout.models.buildings.AdvancedSystems;
 import com.fallout.models.buildings.definitions.Building;
 import com.fallout.models.factions.definitions.Faction;
+import com.fallout.models.resourses.definitions.Resourse;
+
+import java.util.HashMap;
 
 public class BuildingsFactory implements AbstractFactory {
 
-    BuildingsController buildingsController = BuildingsController.getInstance();
 
     @Override
-    public Building getBuilding(String buildingName) {
-        for(Building building: buildingsController.returnAll()){
-            if(building.getProperties().getBuildName().equals(buildingName.toUpperCase())){
-                return building;
-            }
+    public Building getBuilding(KnownBuildings buildingName) {
+        switch (buildingName){
+            case ADVANCED_SYSTEMS:
+                return new AdvancedSystems(500, KnownResources.NUCLEAR_MATERIAL);
+            default:
+                return null;
         }
-        return null;
     }
 
     @Override
     public Faction getFaction(KnownFactions faction) {
         return null;
     }
+
+    @Override
+    public HashMap<Integer, Resourse> getFactionResources(KnownFactions faction) { return null; }
 }

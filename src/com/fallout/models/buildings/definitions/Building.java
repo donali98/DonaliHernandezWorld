@@ -1,6 +1,7 @@
 package com.fallout.models.buildings.definitions;
 
-import com.fallout.config.KnowBuildings;
+import com.fallout.config.KnownBuildings;
+import com.fallout.config.KnownResources;
 import com.fallout.controllers.buildings.BuildingsController;
 import com.fallout.models.Properties;
 import com.fallout.models.factions.definitions.Faction;
@@ -22,10 +23,11 @@ public class Building {
     protected Building(
                     Faction faction,
                     Integer healthPoints,
-                    HashMap<Integer,Resourse> requiredResources,
-                    Resourse productionResource,
+                    HashMap<KnownResources,Integer> requiredResources,
+                    KnownResources productionResource,
                     Integer productionAmountPerPhase,
-                    boolean isMine,KnowBuildings buildName) {
+                    boolean isMine,
+                    KnownBuildings buildName) {
         this.properties = Properties.getProperties(faction,healthPoints,BuildingsController.getInstance().returnAll().size()+1).
                 requiredResources(requiredResources).
                 productionResourse(productionResource).

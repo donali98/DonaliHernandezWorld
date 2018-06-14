@@ -1,16 +1,20 @@
 package com.fallout.controllers.factions;
 
 import com.fallout.AbstractFactory;
+import com.fallout.config.KnownBuildings;
 import com.fallout.config.KnownFactions;
 import com.fallout.models.buildings.definitions.Building;
 import com.fallout.models.factions.BrotherhoodOfSteel;
 import com.fallout.models.factions.TheInstitute;
 import com.fallout.models.factions.definitions.Faction;
+import com.fallout.models.resourses.definitions.Resourse;
+
+import java.util.HashMap;
 
 public class FactionsFactory implements AbstractFactory {
 
     @Override
-    public Building getBuilding(String building) {
+    public Building getBuilding(KnownBuildings building) {
         return null;
     }
 
@@ -25,5 +29,10 @@ public class FactionsFactory implements AbstractFactory {
                return null;
        }
 
+    }
+
+    @Override
+    public HashMap<Integer, Resourse> getFactionResources(KnownFactions faction) {
+        return null;
     }
 }

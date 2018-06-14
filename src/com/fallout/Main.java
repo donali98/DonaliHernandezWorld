@@ -17,7 +17,7 @@ public class Main {
         //Cargando los controladores
 
         GameController  gameController = GameController.getInstance();
-        Faction faction1 =null, faction2 = null;
+        Faction inGameFactions[] = new Faction[2];
 
         System.out.println("******************FALLOUT STRATEGY(DONALI HERNANDEZ'S WORLD)******************\n");
         int opSelected = Global.displayMenu(Global.MAIN_MENU);
@@ -28,14 +28,14 @@ public class Main {
                     opSelected = Global.displayMenu(Global.getAvailableFactions());
                     switch (opSelected){
                         case 1:
-                            faction1 =  FactionController.getInstance().getElementById(1);
+                            inGameFactions[i] =  FactionController.getInstance().getElementById(1);
                         break;
                         case 2:
-                            faction2 =  FactionController.getInstance().getElementById(2);
+                            inGameFactions[i] =  FactionController.getInstance().getElementById(2);
                         break;
                     }
                 }
-                GameController.getInstance().createGameFactions(faction1, faction2);
+                GameController.getInstance().createGameFactions(inGameFactions);
                 GameController.getInstance().play();
             break;
         }

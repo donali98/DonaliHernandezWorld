@@ -43,10 +43,10 @@ public class GameController  {
         return gameController;
     }
     //funcion llamada al momento de que tanto jugador 1 y 2 elijen la faccion con la que quieren jugar
-    public void createGameFactions(Faction factio1, Faction faction2){
+    public void createGameFactions(Faction []factions){
         gamingFactions = new Faction[2];
-        gamingFactions[0] = factio1;
-        gamingFactions[1] = faction2;
+        gamingFactions[0] = factions[0];
+        gamingFactions[1] = factions[1];
         //obteniendo las edificaciones disponibles por faccion
         factionsAvailableBuilds.add(gamingFactions[0].getHeadquarter().getCrafteableBuilds());
         factionsAvailableBuilds.add(gamingFactions[1].getHeadquarter().getCrafteableBuilds());

@@ -1,5 +1,5 @@
 package com.fallout.models.resourses.definitions;
-import com.fallout.models.factions.definitions.Faction;
+import com.fallout.config.KnownFactions;
 
 public class Resourse {
 
@@ -10,9 +10,9 @@ public class Resourse {
 
     private Integer amount;
     private Integer headQuarterStorageLimit;
-    private Faction faction;
+    private KnownFactions faction;
 
-    public Resourse(  Integer amount, Faction faction, Integer headQuarterStorageLimit) {
+    public Resourse(  Integer amount, KnownFactions faction, Integer headQuarterStorageLimit) {
         this.amount = amount;
         this.faction = faction;
         this.headQuarterStorageLimit = headQuarterStorageLimit;
@@ -22,7 +22,7 @@ public class Resourse {
         return amount;
     }
 
-    public Faction getFaction() {
+    public KnownFactions getFaction() {
         return faction;
     }
 

@@ -2,21 +2,20 @@ package com.fallout;
 
 
 import com.fallout.config.Global;
-import com.fallout.config.KnownFactions;
 import com.fallout.controllers.GameController;
 import com.fallout.controllers.factions.FactionController;
-import com.fallout.models.Factories;
 import com.fallout.models.factions.definitions.Faction;
 
+/***
+ * Los facciones se crean en el GameController, los centros de mando se crean al crearse las facciones
+ * y los recursos iniciales por faccion se asignan al crearse el centro de mando
+ */
 public class Main {
 
     public static void main(String[] args) {
 
         //Cargando los controladores
-        /***
-         * Los facciones se crean en el GameController, los centros de mando se crean al crearse las facciones
-         * y los recursos iniciales por faccion se asignan al crearse el centro de mando
-         */
+
         GameController  gameController = GameController.getInstance();
         Faction faction1 =null, faction2 = null;
 

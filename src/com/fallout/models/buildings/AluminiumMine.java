@@ -14,17 +14,14 @@ public class AluminiumMine extends Building implements BuildingActions {
      *     de esta clase son los modelos que hereden de la misma
      * @param healthPoints
      * @param productionResource
-     * @param productionAmountPerPhase
-     * @param isMine
-     * @param buildName
      */
-    protected AluminiumMine(Integer healthPoints, KnownResources productionResource, Integer productionAmountPerPhase, boolean isMine, KnownBuildings buildName) {
+    public AluminiumMine(Integer healthPoints, KnownResources productionResource) {
         super(KnownFactions.BROTHERHOOD_OF_STEEL,
                 healthPoints,
                 Building.setRequiredResources(KnownFactions.BROTHERHOOD_OF_STEEL,KnownBuildings.ALUMINIUM_MINE),
                 productionResource,
-                productionAmountPerPhase,
-                isMine,
+                599,
+                true,
                 KnownBuildings.ALUMINIUM_MINE
         );
     }

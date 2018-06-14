@@ -32,10 +32,11 @@ public class Main {
                         break;
                         case 2:
                             faction2 =  FactionController.getInstance().getElementById(2);
-                            break;
+                        break;
                     }
                 }
                 GameController.getInstance().createGameFactions(faction1, faction2);
+                GameController.getInstance().play();
             break;
         }
 

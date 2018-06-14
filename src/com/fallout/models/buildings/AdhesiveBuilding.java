@@ -14,19 +14,16 @@ public class AdhesiveBuilding extends Building implements BuildingActions {
      *     de esta clase son los modelos que hereden de la misma
      * @param healthPoints
      * @param productionResource
-     * @param productionAmountPerPhase
-     * @param buildName
+
      */
-    protected AdhesiveBuilding( Integer healthPoints,
-                                KnownResources productionResource,
-                                Integer productionAmountPerPhase,
-                                KnownBuildings buildName) {
+    public AdhesiveBuilding( Integer healthPoints,
+                                KnownResources productionResource) {
         super(
                 KnownFactions.BROTHERHOOD_OF_STEEL,
                 healthPoints,
                 Building.setRequiredResources(KnownFactions.BROTHERHOOD_OF_STEEL,KnownBuildings.ADHESIVE_BUILDING),
                 productionResource,
-                productionAmountPerPhase,
+                500,
                 true,
                 KnownBuildings.ADHESIVE_BUILDING
         );

@@ -11,14 +11,13 @@ import java.util.HashMap;
 public class SteelMine extends Building {
     public SteelMine(
             Integer healthPoints,
-            KnownResources productionResource,
-            Integer productionAmountPerPhase) {
+            KnownResources productionResource) {
         super(
                 KnownFactions.BROTHERHOOD_OF_STEEL,
                 healthPoints,
                 Building.setRequiredResources(KnownFactions.BROTHERHOOD_OF_STEEL,KnownBuildings.STEEL_MINE),
                 productionResource,
-                productionAmountPerPhase,
+                500,
                 true,
                 KnownBuildings.STEEL_MINE
         );

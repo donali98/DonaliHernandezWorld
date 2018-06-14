@@ -28,12 +28,17 @@ public class Building {
                     Integer productionAmountPerPhase,
                     boolean isMine,
                     KnownBuildings buildName) {
-        this.properties = Properties.getProperties(faction,healthPoints,BuildingsController.getInstance().returnAll().size()+1).
+        this.properties = Properties.getProperties(faction,healthPoints,
+                BuildingsController.getInstance().returnAll() == null ? 1:BuildingsController.getInstance().returnAll().size()+1).
                 requiredResources(requiredResources).
                 productionResourse(productionResource).
                 productionAmountPerPhase(productionAmountPerPhase).
                 isMine(isMine).buildName(buildName).
                 build();
+    }
+
+    public KnownFactions getBuildFaction(){
+        return this.getProperties().getFaction();
     }
 
     /***

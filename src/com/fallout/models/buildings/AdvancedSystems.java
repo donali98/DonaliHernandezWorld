@@ -9,8 +9,8 @@ import com.fallout.models.buildings.definitions.Building;
 
 
 public class AdvancedSystems extends Building implements BuildingActions {
-    public AdvancedSystems(Integer healthPoints,
-                           KnownResources productionResource){
+    public AdvancedSystems( Integer healthPoints, KnownResources productionResource)
+    {
         super(
                 KnownFactions.THE_INSTITUTE,
                 healthPoints,

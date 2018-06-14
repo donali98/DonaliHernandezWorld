@@ -20,8 +20,7 @@ public class Faction {
         this.factionId = FactionController.getInstance().returnAll() == null ? 1:FactionController.getInstance().returnAll().size()+1 ;
         this.factionName = faction;
         this.buildings = new ArrayList<>();
-        this.headquarter = new Headquarter(this);
-
+        this.headquarter = new Headquarter(faction);
 
     }
 

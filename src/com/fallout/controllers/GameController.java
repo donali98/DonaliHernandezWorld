@@ -32,6 +32,10 @@ public class GameController  {
 
             //Inicializa el menu del juego
             inGameMenu = new ArrayList<>();
+
+            //Opciones base para jugar un turno
+            inGameMenu.add("1-Crear Edificacion");
+            inGameMenu.add("2-Entrenar Tropas");
             factionsAvailableBuilds = new ArrayList<>();
 
             //agrega las facciones existentes
@@ -55,11 +59,14 @@ public class GameController  {
     public void play(){
         //iniciando la partida, creando la fase
         phase = 0;
-        gamingFactions[0].getHeadquarter().createBuild(factionsAvailableBuilds.get(0).get(0));
-        ArrayList<Building> builtBuilds =  gamingFactions[0].getHeadquarter().getBuiltBuilds();
-        for (Building building:builtBuilds){
-            System.out.println(building.getProperties().getBuildName());
+
+        /*
+        for (int i =0; i<2;i++){
+            gamingFactions[i].getHeadquarter().createBuild(factionsAvailableBuilds.get(i).get(i));
         }
+
+        ArrayList<Building> builtBuilds =  gamingFactions[0].getHeadquarter().getBuiltBuilds();*/
+
     }
 
 

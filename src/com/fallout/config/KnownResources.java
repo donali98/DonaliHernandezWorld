@@ -6,5 +6,8 @@ public enum KnownResources {
     NUCLEAR_MATERIAL,
     STEEL,
     ADHESIVE,
-    ALUMINIUM
+    ALUMINIUM,
+    WOOD,
+    JUNK,
+    TUBE
 }

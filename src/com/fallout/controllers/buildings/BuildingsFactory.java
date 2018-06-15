@@ -25,7 +25,7 @@ public class BuildingsFactory implements AbstractFactory {
             case ADHESIVE_BUILDING:
                 return new AdhesiveBuilding(500, KnownResources.ADHESIVE);
             case ALUMINIUM_MINE:
-                return new AluminiumMine(500, KnownResources.ADHESIVE);
+                return new AluminiumMine(500, KnownResources.ALUMINIUM);
             case OIL_MINE:
                 return new OilMine(500, KnownResources.OIL);
             case STEEL_MINE:

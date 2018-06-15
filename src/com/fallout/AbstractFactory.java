@@ -6,12 +6,13 @@ import com.fallout.models.buildings.definitions.Building;
 import com.fallout.models.factions.definitions.Faction;
 import com.fallout.models.resourses.definitions.Resourse;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public interface AbstractFactory {
 
     Building getBuilding(KnownBuildings building);
     Faction getFaction(KnownFactions faction);
-    HashMap<Integer, Resourse> getFactionResources(KnownFactions faction);
+    ArrayList<Resourse>getFactionResources(KnownFactions faction);
 
 }

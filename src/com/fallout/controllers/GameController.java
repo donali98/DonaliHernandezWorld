@@ -2,12 +2,16 @@ package com.fallout.controllers;
 
 import com.fallout.AbstractFactory;
 import com.fallout.FactoryProducer;
+import com.fallout.config.Global;
 import com.fallout.config.KnownBuildings;
 import com.fallout.config.KnownFactions;
 import com.fallout.controllers.factions.FactionController;
+import com.fallout.controllers.resourses.ResourcesController;
 import com.fallout.models.Factories;
 import com.fallout.models.buildings.definitions.Building;
 import com.fallout.models.factions.definitions.Faction;
+import com.fallout.models.resourses.EnclaveRemainder;
+import com.fallout.models.resourses.definitions.Resourse;
 
 import java.util.ArrayList;
 
@@ -19,9 +23,16 @@ public class GameController  {
 
     private static ArrayList<ArrayList<KnownBuildings>> factionsAvailableBuilds;
     private static Faction gamingFactions[];
+    private byte turn;
     private static Integer phase;
+    private static Integer finishedTurnsCount;
 
-    private static ArrayList<String> inGameMenu;
+    //Opciones base para jugar un turno
+    private static String[] inGameMenu = new String[]{
+            "1-Crear Edificacion",
+            "2-Entrenar Tropas",
+            "3-Terminar Turno"
+    };
 
     private GameController(){}
 
@@ -29,13 +40,6 @@ public class GameController  {
         if(gameController==null){
             gameController = new GameController();
 
-
-            //Inicializa el menu del juego
-            inGameMenu = new ArrayList<>();
-
-            //Opciones base para jugar un turno
-            inGameMenu.add("1-Crear Edificacion");
-            inGameMenu.add("2-Entrenar Tropas");
             factionsAvailableBuilds = new ArrayList<>();
 
             //agrega las facciones existentes
@@ -58,15 +62,69 @@ public class GameController  {
     }
     public void play(){
         //iniciando la partida, creando la fase
-        phase = 0;
+        int opSelected = 0;
+        turn = 1;
+        String buildingMenu[];
 
-        /*
-        for (int i =0; i<2;i++){
-            gamingFactions[i].getHeadquarter().createBuild(factionsAvailableBuilds.get(i).get(i));
+        //mientras no se destruya ningun centro de mando
+        while (true){
+            while (opSelected!=-1){
+                switch (turn){
+                    case 1:
+                        displayInfo(gamingFactions[0].getFactionName());
+                        opSelected = Global.displayMenu(inGameMenu);
+                        switch (opSelected){
+                            case 1: {
+                                buildingMenu = getBuildingMenu(0);
+                                int buildSelected = Global.displayMenu(buildingMenu);
+                                break;
+                            }
+                            case 3:
+                                //Terminando turno
+                                turn = 0;
+                            break;
+                        }
+                    break;
+                    case 0:
+                        displayInfo(gamingFactions[1].getFactionName());
+                        opSelected = Global.displayMenu(inGameMenu);
+                        switch (opSelected){
+                            case 1: {
+                                buildingMenu = getBuildingMenu(1);
+                                displayInfo(gamingFactions[1].getFactionName());
+                                int buildSelected = Global.displayMenu(buildingMenu);
+                                break;
+                            }
+                            case 3:
+                                //Terminando turno
+                                turn = 1;
+                                break;
+                        }
+                        break;
+                }
+            }
         }
 
-        ArrayList<Building> builtBuilds =  gamingFactions[0].getHeadquarter().getBuiltBuilds();*/
+    }
 
+    private void displayInfo(KnownFactions faction){
+        System.out.println("--------------------Turno de "+faction.toString()+"--------------------");
+        for (Resourse resourse: FactionController.getInstance().getElementByName(faction).getHeadquarter().getResources()){
+            System.out.println("--------------------------------------------------------");
+            System.out.println("Id:"+resourse.getId()+" Recurso: "+resourse.getClass().getSimpleName()+", Cantidad: "+resourse.getAmount());
+        }
+        System.out.println("--------------------------------------------------------");
+
+    }
+
+    private String[] getBuildingMenu(int faction){
+        String[]buildingMenu;
+        buildingMenu = new String[factionsAvailableBuilds.get(faction).size()];
+
+        for (int i  = 0; i<factionsAvailableBuilds.get(faction).size();i++){
+            buildingMenu[i] = (i+1)+"- "+factionsAvailableBuilds.get(faction).get(i);
+        }
+        return buildingMenu;
     }
 
 

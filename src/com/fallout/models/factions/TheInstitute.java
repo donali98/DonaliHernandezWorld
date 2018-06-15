@@ -10,16 +10,6 @@ public class TheInstitute extends Faction {
 
     public TheInstitute() {
         super(KnownFactions.THE_INSTITUTE);
-        try {
-            this.getHeadquarter().addResource(new NuclearPower(100,10000));
-            this.getHeadquarter().addResource(new EnclaveRemainder(500,5000));
-            this.getHeadquarter().addResource(new Oil(300,3000));
-
-        } catch (Exception e) {
-
-            e.printStackTrace();
-        }
-
     }
 
 

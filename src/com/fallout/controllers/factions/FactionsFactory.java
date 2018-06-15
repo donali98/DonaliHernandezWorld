@@ -9,6 +9,7 @@ import com.fallout.models.factions.TheInstitute;
 import com.fallout.models.factions.definitions.Faction;
 import com.fallout.models.resourses.definitions.Resourse;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class FactionsFactory implements AbstractFactory {
@@ -32,7 +33,7 @@ public class FactionsFactory implements AbstractFactory {
     }
 
     @Override
-    public HashMap<Integer, Resourse> getFactionResources(KnownFactions faction) {
+    public ArrayList<Resourse> getFactionResources(KnownFactions faction) {
         return null;
     }
 }

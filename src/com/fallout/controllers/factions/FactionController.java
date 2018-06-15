@@ -54,10 +54,10 @@ public class FactionController implements GeneralControllerActions<Faction,Known
 
     @Override
     public ArrayList<Faction> returnAll() {
-        if(!factions.isEmpty()){
+       // if(!factions.isEmpty()){
             return factions;
-        }
-        else return null;
+        //}
+        //else return null;
     }
 
 

@@ -39,7 +39,7 @@ public class Global {
                     System.out.println(opcion);
                 }
                 op = scanner.nextInt();
-                if(op>opciones.length) System.out.println("Opcion no valida");
+                if(op>opciones.length || op<0) System.out.println("Opcion no valida");
                 else return op;
 
             }

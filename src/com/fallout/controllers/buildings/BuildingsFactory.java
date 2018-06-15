@@ -11,6 +11,7 @@ import com.fallout.models.buildings.definitions.Building;
 import com.fallout.models.factions.definitions.Faction;
 import com.fallout.models.resourses.definitions.Resourse;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class BuildingsFactory implements AbstractFactory {
@@ -40,5 +41,5 @@ public class BuildingsFactory implements AbstractFactory {
     }
 
     @Override
-    public HashMap<Integer, Resourse> getFactionResources(KnownFactions faction) { return null; }
+    public ArrayList<Resourse> getFactionResources(KnownFactions faction) { return null; }
 }

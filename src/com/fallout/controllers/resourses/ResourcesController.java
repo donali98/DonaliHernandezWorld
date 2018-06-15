@@ -29,19 +29,21 @@ public class ResourcesController implements GeneralControllerActions<Resourse,Kn
 
     @Override
     public Resourse getElementByName(KnownResources type) {
-        for (Resourse resourse: resources){
-          // if (resourse.g)
-        }
         return null;
     }
 
     @Override
     public Resourse getElementById(Integer type) {
+        for (Resourse resourse: resources){
+            if(resourse.getId().equals(type)){
+                return resourse;
+            }
+        }
         return null;
     }
 
     @Override
     public ArrayList<Resourse> returnAll() {
-        return null;
+        return resources;
     }
 }

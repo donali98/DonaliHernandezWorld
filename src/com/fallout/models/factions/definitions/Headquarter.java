@@ -6,8 +6,10 @@ import com.fallout.config.KnownBuildings;
 import com.fallout.config.KnownFactions;
 import com.fallout.controllers.buildings.BuildingsController;
 import com.fallout.controllers.factions.HeadquarterActions;
+import com.fallout.controllers.resourses.ResourcesController;
 import com.fallout.models.Factories;
 import com.fallout.models.buildings.definitions.Building;
+import com.fallout.models.resourses.Oil;
 import com.fallout.models.resourses.definitions.Resourse;
 import java.util.ArrayList;
 
@@ -19,17 +21,38 @@ public class Headquarter implements HeadquarterActions<Building>{
     private ArrayList<KnownBuildings> crafteableBuilds;
     private ArrayList<Building> builtBuilds;
     private AbstractFactory buildingFactory = FactoryProducer.getFactory(Factories.BUILDING_FACTORY);
-
+    private AbstractFactory resourceFactory = FactoryProducer.getFactory(Factories.RESOURCES_FACTORY);
 
     public Headquarter(KnownFactions faction) {
-        this.resources = new ArrayList<>();
         this.builtBuilds = new ArrayList<>();
 
         //nivel inicial del centro de mando
         this.level = 0;
         this.faction = faction;
+        resources = new ArrayList<>();
         setCraftableBuilds();
+        setResources();
+    }
+    private void setResources(){
+        switch (faction){
+            case THE_INSTITUTE:
+                resources = resourceFactory.getFactionResources(KnownFactions.THE_INSTITUTE) ;
+            break;
 
+            case BROTHERHOOD_OF_STEEL:
+                resourceFactory.getFactionResources(KnownFactions.BROTHERHOOD_OF_STEEL);
+            break;
+        }
+    }
+
+    private ArrayList<Resourse> filterResource(){
+        ArrayList<Resourse> resourses = new ArrayList<>();
+        for (Resourse resourse: ResourcesController.getInstance().returnAll()){
+            if (resourse.getFaction() == faction){
+                resourses.add(resourse);
+            }
+        }
+        return resourses;
     }
 
     public void setBuiltBuilds(ArrayList<Building> builtBuilds) {
@@ -42,10 +65,10 @@ public class Headquarter implements HeadquarterActions<Building>{
         return level;
     }
 
-    public ArrayList<Resourse> getResources() {
-        return resources;
-    }
 
+    public ArrayList<Resourse> getResources(){
+        return filterResource();
+    }
     public ArrayList<KnownBuildings> getCrafteableBuilds() { return crafteableBuilds; }
 
     private void setCraftableBuilds() {
@@ -66,14 +89,6 @@ public class Headquarter implements HeadquarterActions<Building>{
         }
     }
 
-    @Override
-    public boolean addResource(Resourse resource) {
-        if(!resources.contains(resource)){
-            resources.add(resource);
-            return true;
-        }
-        return false;
-    }
 
     @Override
     public void createBuild(KnownBuildings building) {
